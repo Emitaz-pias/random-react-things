@@ -8,8 +8,9 @@ function App() {
   const [likeBtnColor,setLikeBtnColor] = useState('');
   const [users,setUser] = useState([])
   const [randomUser,setRandomUser] = useState({})
+  const [meal,setMeal]= useState({});
   const handleLikeBtn = ()=>{
-    const color = likeBtnColor? "":"disabled";
+    const color = likeBtnColor? "":"primary";
     setLikeBtnColor(color)
   }
   useEffect(()=>{
@@ -20,6 +21,10 @@ function App() {
     fetch('https://randomuser.me/api/')
     .then(response=>response.json())
     .then(data =>setRandomUser(data.results[0]))
+    // optional chaining 
+    fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772')
+    .then(response=>response.json())
+    .then(data =>setMeal(data?.meals[0]))
   },[])
   return (
     <div className="App">
@@ -32,6 +37,11 @@ function App() {
       <h2>Gender:{randomUser.name?.first}</h2>
 
 }
+{
+    console.log(meal)
+}
+  <h2>meal Name : {meal.strMeal}</h2>
+
     </div>
   );
 }

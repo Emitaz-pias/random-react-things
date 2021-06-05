@@ -3,6 +3,7 @@ import './App.css';
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import { useEffect, useState } from 'react';
+import MealDetails from './MealDetails';
 
 function App() {
   const [likeBtnColor,setLikeBtnColor] = useState('');
@@ -28,6 +29,7 @@ function App() {
   },[])
   return (
     <div className="App">
+      <MealDetails></MealDetails>
       <AccessAlarmIcon></AccessAlarmIcon>
       <ThumbUpAltIcon onClick={handleLikeBtn} color = {likeBtnColor} ></ThumbUpAltIcon>
      {
@@ -41,7 +43,6 @@ function App() {
     console.log(meal)
 }
   <h2>meal Name : {meal.strMeal}</h2>
-
     </div>
   );
 }
